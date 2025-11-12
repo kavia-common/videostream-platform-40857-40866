@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { MenuIcon, SearchIcon, MicIcon, CreateIcon, BellIcon } from "./Icon";
+import { MenuIcon, SearchIcon, MicIcon, CreateIcon, BellIcon, AppsIcon } from "./Icon";
 import "../theme.css";
 
 // PUBLIC_INTERFACE
 export default function Header({ onMenuToggle, initialQuery = "" }) {
-  /** Header with logo, search, and action icons. */
+  /** Header with logo, search, and action icons (per latest design notes). */
   const [q, setQ] = useState(initialQuery);
 
   const submit = (e) => {
@@ -26,10 +26,10 @@ export default function Header({ onMenuToggle, initialQuery = "" }) {
         <button className="iconBtn" aria-label="Open menu" onClick={onMenuToggle}>
           <MenuIcon />
         </button>
-        <div className="brand" aria-label="YouTube clone home">
+        <a className="brand" aria-label="YouTube clone home" href="/">
           <span className="brandMark" />
           <span>YouTube</span>
-        </div>
+        </a>
       </div>
 
       <div className="headerCluster center">
@@ -38,7 +38,7 @@ export default function Header({ onMenuToggle, initialQuery = "" }) {
             <input
               className="searchInput"
               type="search"
-              placeholder='Search'
+              placeholder="Search"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               onKeyDown={onKeyDown}
@@ -58,15 +58,18 @@ export default function Header({ onMenuToggle, initialQuery = "" }) {
         <button className="iconBtn" aria-label="Create">
           <CreateIcon />
         </button>
+        <button className="iconBtn" aria-label="Apps">
+          <AppsIcon />
+        </button>
         <button className="iconBtn" aria-label="Notifications">
           <BellIcon />
         </button>
         <button className="iconBtn" aria-label="User menu">
           <div
             style={{
-              width: 28,
-              height: 28,
-              borderRadius: 14,
+              width: 32,
+              height: 32,
+              borderRadius: 16,
               background:
                 "linear-gradient(135deg, var(--ocean-primary), var(--ocean-secondary))",
             }}

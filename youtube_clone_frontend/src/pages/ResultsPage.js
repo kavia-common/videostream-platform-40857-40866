@@ -9,7 +9,7 @@ import "../theme.css";
 export default function ResultsPage() {
   /**
    * Search results page.
-   * Reads search_query from the URL and renders a vertical list of results.
+   * Reads search_query from the URL and renders a two-column responsive results grid.
    */
   const params = useMemo(() => new URLSearchParams(window.location.search), []);
   const query = params.get("search_query") || "";
@@ -56,12 +56,24 @@ export default function ResultsPage() {
       <Sidebar />
       <main className="main" role="main">
         <div className="container">
-          <div className="resultsList" aria-live="polite">
+          {/* Filters row */}
+          <div className="filtersRow">
+            <button className="filterPill" type="button" aria-label="Open filters">
+              Filters
+            </button>
+          </div>
+
+          {/* Results grid */}
+          <div className="resultsGrid" aria-live="polite">
             {items.map((it) => (
               <ResultItem key={it.id} item={it} />
             ))}
-            {loading && <div style={{ color: "var(--text-secondary)" }}>Loading…</div>}
           </div>
+
+          {loading && (
+            <div style={{ color: "var(--text-secondary)", paddingTop: 8 }}>Loading…</div>
+          )}
+
           {nextPage && (
             <div style={{ display: "flex", justifyContent: "center", padding: "16px 0 40px" }}>
               <button
@@ -71,7 +83,8 @@ export default function ResultsPage() {
                   width: "auto",
                   height: 40,
                   borderRadius: 20,
-                  background: "linear-gradient(135deg, rgba(37,99,235,0.25), rgba(245,158,11,0.25))",
+                  background:
+                    "linear-gradient(135deg, rgba(37,99,235,0.25), rgba(245,158,11,0.25))",
                   border: `1px solid var(--border-subtle)`,
                 }}
                 onClick={loadMore}

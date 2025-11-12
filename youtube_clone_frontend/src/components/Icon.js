@@ -71,3 +71,9 @@ export const HistoryIcon = () => (
     <path fill="currentColor" d="M13 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7V3l4 4-1.41 1.41L13 6.83V3z"></path>
   </svg>
 );
+
+export const AppsIcon = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"></path>
+  </svg>
+);

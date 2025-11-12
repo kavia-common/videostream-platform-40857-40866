@@ -4,7 +4,7 @@ import "../theme.css";
 
 // PUBLIC_INTERFACE
 export default function ResultItem({ item }) {
-  /** Video result list item with thumbnail, meta, and actions. */
+  /** Video result card used inside the results grid. */
   return (
     <article className="resultItem" aria-label="Search result">
       <a className="thumbnail" href="#" title={item.title}>
@@ -16,15 +16,15 @@ export default function ResultItem({ item }) {
           <a className="videoTitle" href="#">
             {item.title}
           </a>
+          <button className="moreBtn" aria-label="More actions">
+            <DotsIcon />
+          </button>
         </div>
         <div className="videoInfo">
           {item.channel} • {item.views} • {item.time}
         </div>
         <p className="videoDesc">{item.description}</p>
       </div>
-      <button className="moreBtn" aria-label="More actions">
-        <DotsIcon />
-      </button>
     </article>
   );
 }
